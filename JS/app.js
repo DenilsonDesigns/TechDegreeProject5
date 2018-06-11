@@ -28,20 +28,23 @@ function generateDetails(data){
     employeePic.src= `${data.results[0].picture.large}`
     employee.appendChild(employeePic);
 
+    const detailsDiv= document.createElement('div');
+    detailsDiv.classList.add('employ-card-deets');
     const employeeName= document.createElement('h4');
     employeeName.innerHTML=  `${data.results[0].name.first}`
     employeeName.innerHTML+= ` ${data.results[0].name.last}` 
-    employee.appendChild(employeeName);
+    detailsDiv.appendChild(employeeName);
 
     const employeeEmail= document.createElement('p');
     employeeEmail.innerHTML= `${data.results[0].email}`
-    employee.appendChild(employeeEmail);
-
+    detailsDiv.appendChild(employeeEmail);
+   
     const employeeCity= document.createElement('p');
     employeeCity.innerHTML= `${data.results[0].location.city}`
     employeeCity.style.textTransform= "capitalize";
-    employee.appendChild(employeeCity);
+    detailsDiv.appendChild(employeeCity);
 
+    employee.appendChild(detailsDiv);
     employeeList.appendChild(employee);
 }
 

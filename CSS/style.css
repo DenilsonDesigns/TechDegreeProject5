@@ -16,7 +16,16 @@ div .employee-list {
   display: flex;
 }
 
+.employ-card-deets{
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: 20px;
+  width: 200px;
+}
 
+p{
+  display: block;
+}
 
  img {
   border-radius: 50%;
@@ -26,4 +35,5 @@ div .employee-list {
 
 h4{
   text-transform: capitalize;
+  display: block;
 }
