@@ -21,15 +21,16 @@ fetch('https://randomuser.me/api/')
 
 //helper function
 function generateDetails(data){
-    const employee= document.createElement('li');
+    const employee= document.createElement('div');
+    employee.classList.add('employee-card');
 
     const employeePic= document.createElement('img');
     employeePic.src= `${data.results[0].picture.large}`
     employee.appendChild(employeePic);
 
-    const employeeName= document.createElement('p');
+    const employeeName= document.createElement('h4');
     employeeName.innerHTML=  `${data.results[0].name.first}`
-    employeeName.innerHTML+= ` ${data.results[0].name.last}`
+    employeeName.innerHTML+= ` ${data.results[0].name.last}` 
     employee.appendChild(employeeName);
 
     const employeeEmail= document.createElement('p');
@@ -38,6 +39,7 @@ function generateDetails(data){
 
     const employeeCity= document.createElement('p');
     employeeCity.innerHTML= `${data.results[0].location.city}`
+    employeeCity.style.textTransform= "capitalize";
     employee.appendChild(employeeCity);
 
     employeeList.appendChild(employee);
