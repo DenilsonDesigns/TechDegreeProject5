@@ -26,7 +26,7 @@ fetch('https://randomuser.me/api/?results=200')
         for(let j=0; j<12; j++){
             generateDetails(employees, j)
         }
-        modalPopulate(employees, 1);
+        
     })
     // .then(data=>{
     //     pagin(employees)
@@ -38,13 +38,15 @@ fetch('https://randomuser.me/api/?results=200')
 function generateDetails(data, i){
     const employee= document.createElement('div');
     employee.classList.add('employee-card');
-
+    employee.id= i;
     const employeePic= document.createElement('img');
+    employeePic.id= i;
     employeePic.src= `${data[i].picture.large}`
     employee.appendChild(employeePic);
 
     const detailsDiv= document.createElement('div');
     detailsDiv.classList.add('employ-card-deets');
+    detailsDiv.id= i;
     const employeeName= document.createElement('h4');
     employeeName.innerHTML=  `${data[i].name.first}`
     employeeName.innerHTML+= ` ${data[i].name.last}` 

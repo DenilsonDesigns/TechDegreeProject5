@@ -8,71 +8,80 @@
 var modal= document.createElement('div');
 modal.id= "employeeModal";
 modal.classList.add('modal');
-
+page.appendChild(modal);
 var modalContent= document.createElement('div');
 modalContent.classList.add('modal-content');
-
-// var closeBtn= document.createElement('button');
-// closeBtn.innerHTML= "Close";
-// closeBtn.classList.add('closeBtn');
-
 modal.appendChild(modalContent);
-//modalContent.appendChild(closeBtn);
-page.appendChild(modal);
+//fields for modal
+const employeePic= document.createElement('img');
+modalContent.appendChild(employeePic);
+const detailsDiv= document.createElement('div');
+detailsDiv.classList.add('modal-card-deets');
+const employeeName= document.createElement('h4');
+detailsDiv.appendChild(employeeName);
+const employeeUsername= document.createElement('p');
+detailsDiv.appendChild(employeeUsername);
+const employeeEmail= document.createElement('p');
+detailsDiv.appendChild(employeeEmail);
+const employeeCell= document.createElement('p');
+detailsDiv.appendChild(employeeCell);
+const employeeAddress= document.createElement('p');
+employeeAddress.style.textTransform= "capitalize";
+detailsDiv.appendChild(employeeAddress);
+modalContent.appendChild(detailsDiv);
+const buttDiv= document.createElement('div');
+modalContent.appendChild(buttDiv);
+const prevButt= document.createElement('button');
+prevButt.innerHTML= "Prev";
+//eventlistener to be added ***********
+prevButt.addEventListener('click', prevButton);
+buttDiv.appendChild(prevButt);
+const closeBtn= document.createElement('button');
+closeBtn.innerHTML= "Close";
+closeBtn.addEventListener('click', closeModal);
+buttDiv.appendChild(closeBtn);
+const nextButt= document.createElement('button');
+nextButt.innerHTML= 'Next';
+//eventlistener to be added ********
+nextButt.addEventListener('click', nextButton);
+buttDiv.appendChild(nextButt);
 
-
-//adding to modal
-
-//listeners
-employeeList.addEventListener('click', openModal);
-//closeBtn.addEventListener('click', closeModal);
-window.addEventListener('click', outsideClick);
-
-//functions
-function openModal(){
+//listener for employee cards. 
+employeeList.addEventListener('click', (e)=>{
+    if(e.target.id>=0 && e.target.id<=12){
     modal.style.display= "block";
+    modalPopulate(employees, e.target.id);
+    console.log(e.target.id);
+    }
+});
+
+function closeModal(){
+    modal.style.display= "none";
 }
 
-// function outsideClick(){
-//     if(modal.style.display== "block"){
-//         modal.style.display= "none";
-//     }
-// }
+function prevButton(){
+    if(modalContent.id>=1){
+    modalPopulate(employees, modalContent.id -1)
+    }
+}
+
+function nextButton(){
+    if(modalContent.id<11){
+    modalPopulate(employees, Number(modalContent.id) +1)
+    }
+}
 
 
 //populate modal
 function modalPopulate(data, employeeNum){
-
-    const employeePic= document.createElement('img');
     employeePic.src= `${data[employeeNum].picture.large}`
-    modal.appendChild(employeePic);
-
-    const detailsDiv= document.createElement('div');
-    detailsDiv.classList.add('modal-card-deets');
-    const employeeName= document.createElement('h4');
     employeeName.innerHTML=  `Name: ${data[employeeNum].name.first}`
-    employeeName.innerHTML+= ` ${data[employeeNum].name.last}` 
-    detailsDiv.appendChild(employeeName);
-
-    const employeeUsername= document.createElement('p');
+    employeeName.innerHTML+= ` ${data[employeeNum].name.last}`
     employeeUsername.innerHTML= `Username: ${data[employeeNum].id.name}`
-    detailsDiv.appendChild(employeeUsername);
-
-    const employeeEmail= document.createElement('p');
     employeeEmail.innerHTML= `Email: ${data[employeeNum].email}`
-    detailsDiv.appendChild(employeeEmail);
-
-    const employeeCell= document.createElement('p');
     employeeCell.innerHTML= `Cell: ${data[employeeNum].cell}`
-    detailsDiv.appendChild(employeeCell);
-
-    const employeeAddress= document.createElement('p');
     employeeAddress.innerHTML= `${data[employeeNum].location.street}, ${data[employeeNum].location.city},
     ${data[employeeNum].location.state} ${data[employeeNum].location.postcode}`
-    employeeAddress.style.textTransform= "capitalize";
 
-    detailsDiv.appendChild(employeeAddress);
-
-    modal.appendChild(detailsDiv);
-    modal.style.backgroundColor= "white";
+    modalContent.id= employeeNum;
 }
