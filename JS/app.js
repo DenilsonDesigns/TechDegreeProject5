@@ -15,77 +15,71 @@ const employeeList= document.querySelector('.employee-list');
 var employees;
 
 //making request
-fetch('https://randomuser.me/api/?results=200')
+fetch('https://randomuser.me/api/?results=12')
     .then(response => response.json())
     .then(data=> {employees= data.results; })
-//.then(data => generateDetails(data))
-//.then(data=> console.log(data))
 
     //print first page of results
     .then(data=>{
         for(let j=0; j<12; j++){
             generateDetails(employees, j)
         }
-        
     })
-    // .then(data=>{
-    //     pagin(employees)
-    // })
 
+ 
+  
+//creating employee cards
+for(let i=0; i< 12; i++){
+    const employee= document.createElement('div');
+    employee.classList.add('employee-card');
+    employee.id= i;
+
+    const empPic= document.createElement('img');
+    empPic.classList.add('employee-pics');
+    empPic.id= i;
+    employee.appendChild(empPic);
+
+    const details= document.createElement('div');
+    details.classList.add('employ-card-deets');
+    details.id= i;
+
+    const empName= document.createElement('h4');
+    empName.classList.add('employee-name');
+    empName.id= i;
+    details.appendChild(empName);
+
+    const empEmail= document.createElement('p');
+    empEmail.classList.add('employee-email');
+    empEmail.id= i;
+    details.appendChild(empEmail);
+
+    const empCity= document.createElement('p');
+    empCity.classList.add('employee-city');
+    empCity.id= i;
+    details.appendChild(empCity);
+
+    employee.appendChild(details);
+    employeeList.appendChild(employee);
+
+}
+
+//grabbing employeecard elements
+const employeeCards= document.getElementsByClassName('employee-card');
+const employeePics= document.getElementsByClassName('employee-pics');
+const employeeDetails= document.getElementsByClassName('employ-card-deets');
+const employeeName= document.getElementsByClassName('employee-name');
+const employeeEmail= document.getElementsByClassName('employee-email');
+const employeeCity= document.getElementsByClassName('employee-city');
 
 
 //helper function
 function generateDetails(data, i){
-    const employee= document.createElement('div');
-    employee.classList.add('employee-card');
-    employee.id= i;
-    const employeePic= document.createElement('img');
-    employeePic.id= i;
-    employeePic.src= `${data[i].picture.large}`
-    employee.appendChild(employeePic);
-
-    const detailsDiv= document.createElement('div');
-    detailsDiv.classList.add('employ-card-deets');
-    detailsDiv.id= i;
-    const employeeName= document.createElement('h4');
-    employeeName.innerHTML=  `${data[i].name.first}`
-    employeeName.innerHTML+= ` ${data[i].name.last}` 
-    detailsDiv.appendChild(employeeName);
-
-    const employeeEmail= document.createElement('p');
-    employeeEmail.innerHTML= `${data[i].email}`
-    detailsDiv.appendChild(employeeEmail);
-   
-    const employeeCity= document.createElement('p');
-    employeeCity.innerHTML= `${data[i].location.city}`
-    employeeCity.style.textTransform= "capitalize";
-    detailsDiv.appendChild(employeeCity);
-
-    employee.appendChild(detailsDiv);
-    employeeList.appendChild(employee);
+    employeePics[i].src= `${data[i].picture.large}`
+    employeeName[i].innerHTML=  `${data[i].name.first}`
+    employeeName[i].innerHTML+= ` ${data[i].name.last}` 
+    employeeEmail[i].innerHTML= `${data[i].email}`
+    employeeCity[i].innerHTML= `${data[i].location.city}`
+    employeeCity[i].style.textTransform= "capitalize";
 }
 
-
-//making pagination
-function pagin(list){
-    const noOfButtons= Math.ceil(list.length/12);
-  
-
-    // create a page link section
-    const paginDiv= document.createElement('div');
-    paginDiv.className= 'pagination';
-    employeeList.appendChild(paginDiv);
-    const ul= document.createElement('ul');
-    paginDiv.appendChild(ul);
-
-    // based on no of buttons required, adding that number of buttons. 
-    for(let i=1; i<= noOfButtons; i++){
-        const li= document.createElement('li');
-        ul.appendChild(li);
-        const a= document.createElement('a');
-        li.appendChild(a);
-        a.href= "#";
-        a.innerText= i;
-    }
-}  
 
