@@ -5,26 +5,33 @@ const searchNames= document.getElementsByClassName('employee-name');
 //name search input******
 searchInput.addEventListener('keyup', ()=>{
     for(let i=0; i < employeeCards.length; i++){
-        if(searchNames[i].textContent.toUpperCase().indexOf(searchInput.value.toUpperCase()) > -1){
+        if(searchNames[i].textContent.toUpperCase().indexOf(searchInput.value.toUpperCase())
+        > -1){
             employeeCards[i].style.display= "block";
-        }else{
-            employeeCards[i].style.display= "none";
-        }
+        }else if(employees[i].login.username.toUpperCase().indexOf(searchInput.value.toUpperCase())
+        > -1){
+            employeeCards[i].style.display= "block";
+            }
+                else{
+                    employeeCards[i].style.display= "none";
+                }
     }
 });
 //name search searchbtn****
 searchBtn.addEventListener('click', ()=>{
     for(let i=0; i < employeeCards.length; i++){
-        if(searchNames[i].textContent.toUpperCase().indexOf(searchInput.value.toUpperCase()) > -1){
+        if(searchNames[i].textContent.toUpperCase().indexOf(searchInput.value.toUpperCase())
+        > -1){
             employeeCards[i].style.display= "block";
-        }else{
-            employeeCards[i].style.display= "none";
+        }else if(employees[i].login.username.toUpperCase().indexOf(searchInput.value.toUpperCase())
+        > -1){
+            employeeCards[i].style.display= "block";
         }
+            else{
+                employeeCards[i].style.display= "none";
+            }
     }
 });
-
-
-
 
 
 

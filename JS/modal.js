@@ -69,11 +69,11 @@ function nextButton(){
 //populate modal
 function modalPopulate(data, employeeNum){
     employeePicMod.src= `${data[employeeNum].picture.large}`
-    employeeNameMod.innerHTML=  `Name: ${data[employeeNum].name.first}`
+    employeeNameMod.innerHTML=  `${data[employeeNum].name.first}`
     employeeNameMod.innerHTML+= ` ${data[employeeNum].name.last}`
-    employeeUsernameMod.innerHTML= `Username: ${data[employeeNum].login.username}`
-    employeeEmailMod.innerHTML= `Email: ${data[employeeNum].email}`
-    employeeCellMod.innerHTML= `Cell: ${data[employeeNum].cell}`
+    employeeUsernameMod.innerHTML= `${data[employeeNum].login.username}`
+    employeeEmailMod.innerHTML= `${data[employeeNum].email}`
+    employeeCellMod.innerHTML= `${data[employeeNum].cell}`
     employeeAddressMod.innerHTML= `${data[employeeNum].location.street}, ${data[employeeNum].location.city},
     ${data[employeeNum].location.state} ${data[employeeNum].location.postcode}`
 
