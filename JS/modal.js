@@ -13,6 +13,11 @@ const detailsDivMod= document.createElement('div');
 detailsDivMod.classList.add('modal-card-deets');
 const employeeNameMod= document.createElement('h4');
 detailsDivMod.appendChild(employeeNameMod);
+
+const employBdateMod= document.createElement('p');
+employBdateMod.classList.add('bday');
+detailsDivMod.appendChild(employBdateMod);
+
 const employeeUsernameMod= document.createElement('p');
 detailsDivMod.appendChild(employeeUsernameMod);
 const employeeEmailMod= document.createElement('p');
@@ -72,6 +77,7 @@ function modalPopulate(data, employeeNum){
     employeePicMod.src= `${data[employeeNum].picture.large}`
     employeeNameMod.innerHTML=  `${data[employeeNum].name.first}`
     employeeNameMod.innerHTML+= ` ${data[employeeNum].name.last}`
+    employBdateMod.innerHTML= `D.O.B: ${data[employeeNum].dob}`
     employeeUsernameMod.innerHTML= `${data[employeeNum].login.username}`
     employeeEmailMod.innerHTML= `${data[employeeNum].email}`
     employeeCellMod.innerHTML= `${data[employeeNum].cell}`
