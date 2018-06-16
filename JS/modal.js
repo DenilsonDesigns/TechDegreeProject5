@@ -22,12 +22,14 @@ detailsDivMod.appendChild(employeeCellMod);
 const employeeAddressMod= document.createElement('p');
 employeeAddressMod.style.textTransform= "capitalize";
 detailsDivMod.appendChild(employeeAddressMod);
+const employeeStateZip= document.createElement('p');
+employeeStateZip.style.textTransform= "capitalize";
+detailsDivMod.appendChild(employeeStateZip);
 modalContent.appendChild(detailsDivMod);
 const buttDiv= document.createElement('div');
 modalContent.appendChild(buttDiv);
 const prevButt= document.createElement('button');
 prevButt.innerHTML= "Prev";
-//eventlistener to be added ***********
 prevButt.addEventListener('click', prevButton);
 buttDiv.appendChild(prevButt);
 const closeBtn= document.createElement('button');
@@ -36,7 +38,6 @@ closeBtn.addEventListener('click', closeModal);
 buttDiv.appendChild(closeBtn);
 const nextButt= document.createElement('button');
 nextButt.innerHTML= 'Next';
-//eventlistener to be added ********
 nextButt.addEventListener('click', nextButton);
 buttDiv.appendChild(nextButt);
 
@@ -74,8 +75,8 @@ function modalPopulate(data, employeeNum){
     employeeUsernameMod.innerHTML= `${data[employeeNum].login.username}`
     employeeEmailMod.innerHTML= `${data[employeeNum].email}`
     employeeCellMod.innerHTML= `${data[employeeNum].cell}`
-    employeeAddressMod.innerHTML= `${data[employeeNum].location.street}, ${data[employeeNum].location.city},
-    ${data[employeeNum].location.state} ${data[employeeNum].location.postcode}`
-
+    employeeAddressMod.innerHTML= `${data[employeeNum].location.street}, ${data[employeeNum].location.city}
+    `
+    employeeStateZip.innerHTML= `${data[employeeNum].location.state} ${data[employeeNum].location.postcode}`
     modalContent.id= employeeNum;
 }

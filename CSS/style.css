@@ -8,14 +8,12 @@ h2{
   font-family: 'Lato';
 }
 
-
-
 .page-header{
   display: inline;
 }
 
 div .employee-list {
-  margin: 0 auto;
+  margin: 10px 10px;
   text-align: center;
   columns: 3;
   grid-row: 4;
@@ -92,14 +90,14 @@ h4{
 
 .modal-content{
   height: fit-content;
-  width: fit-content;
+  width: 350px;
   z-index: 1;
   background-color: rgb(241, 234, 234);
   overflow: hidden;
   text-align: center;
   position: absolute;
   top: 5em;
-  left: 25em;
+  left: 30em;
   border-radius: 1.4%;
   font-family: 'Montserrat', sans-serif;
   padding: 5px 5px;
@@ -110,10 +108,8 @@ h4{
   font-size: 16pt;
 }
 
-
 button{
   margin: 5px 10px;
-
 }
 
 .modal-content button{
@@ -153,7 +149,7 @@ button{
 
   .modal-content{
     height: fit-content;
-    width: fit-content;
+    width: 250px;
     z-index: 1;
     overflow: hidden;
     text-align: center;
@@ -163,8 +159,16 @@ button{
     padding: 5px 5px;
   }
 
+  .modal-card-deets{
+    height: 250px;
+  }
+
   .employee-card{
     max-width: 420px;
   }
 
+  div .employee-list {
+    margin: 10px 15px;
+    
+  }
 }
