@@ -77,7 +77,7 @@ function modalPopulate(data, employeeNum){
     employeePicMod.src= `${data[employeeNum].picture.large}`
     employeeNameMod.innerHTML=  `${data[employeeNum].name.first}`
     employeeNameMod.innerHTML+= ` ${data[employeeNum].name.last}`
-    employBdateMod.innerHTML= `D.O.B: ${data[employeeNum].dob}`
+    employBdateMod.innerHTML= 'D.O.B: '+data[employeeNum].dob.date.slice(0,10);
     employeeUsernameMod.innerHTML= `${data[employeeNum].login.username}`
     employeeEmailMod.innerHTML= `${data[employeeNum].email}`
     employeeCellMod.innerHTML= `${data[employeeNum].cell}`
